@@ -13,8 +13,9 @@ BaselineOfDeepTraverser >> baseline: spec [
 	spec
 		for: #common
 		do: [ 
-			"Dependencies"
-			self gtToolkitExamplesEngine: spec.
+			spec
+				baseline: 'GToolkitExamplesEngine'
+				with: [ spec repository: 'github://feenkcom/gtoolkit-examples/src' ].
 			
 			"Packages"
 			spec
@@ -29,11 +30,4 @@ BaselineOfDeepTraverser >> baseline: spec [
 				group: 'Examples' with: #('DeepTraverser-Examples');
 				group: 'ExamplesWithGTEngine' with: #('Examples' 'GToolkitExamplesEngine');
 				group: 'Tests' with: #('DeepTraverser-Tests') ]
-]
-
-{ #category : #dependencies }
-BaselineOfDeepTraverser >> gtToolkitExamplesEngine: spec [
-	spec
-		baseline: 'GToolkitExamplesEngine'
-		with: [ spec repository: 'github://feenkcom/gtoolkit-examples/src' ]
 ]
