@@ -7,17 +7,17 @@ Class {
 	#category : #BaselineOfDeepTraverser
 }
 
-{ #category : #baselines }
+{ #category : #baseline }
 BaselineOfDeepTraverser >> baseline: spec [
 	<baseline>
-	spec
-		for: #common
-		do: [ 
-			spec
-				baseline: 'GToolkitExamplesEngine'
-				with: [ spec repository: 'github://feenkcom/gtoolkit-examples/src' ].
-			spec
-				package: 'DeepTraverser';
-				package: 'DeepTraverser-Examples' with: [ spec requires: #('DeepTraverser' 'GToolkitExamplesEngine') ];
-				package: 'DeepTraverser-Tests' with: [ spec requires: #('DeepTraverser') ] ]
+	spec for: #'common' do: [
+		spec baseline: 'GToolkitExamplesEngine' with: [
+				spec repository: 'github://feenkcom/gtoolkit-examples/src' ].
+		spec 
+			package: 'DeepTraverser';
+			package: 'DeepTraverser-Examples' with: [
+				spec requires: #('DeepTraverser' 'GToolkitExamplesEngine' ). ];
+			package: 'DeepTraverser-Tests' with: [
+				spec requires: #('DeepTraverser' ). ]. ].
+
 ]
