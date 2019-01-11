@@ -40,5 +40,5 @@ DeepTraverserGraphTest >> testImplementations [
 		
 	self assert: results notEmpty.
 	self assert: (results allSatisfy: [ :each | each notEmpty ]).
-	self assert: results asSet size = 2
+	self assert: results asSet size = 1
 ]
