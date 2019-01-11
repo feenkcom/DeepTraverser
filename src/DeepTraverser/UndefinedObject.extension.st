@@ -9,6 +9,15 @@ UndefinedObject >> dtActionfrom: fromObject to: toObject using: aStream [
 ]
 
 { #category : #'*DeepTraverser-private' }
+UndefinedObject >> dtRawTraverse: anObject using: aStream [
+	
+]
+
+{ #category : #'*DeepTraverser-private' }
+UndefinedObject >> dtRawTraverseUsing: aStream [
+]
+
+{ #category : #'*DeepTraverser-private' }
 UndefinedObject >> dtTraverse: anObject using: aStream [
 	
 ]
