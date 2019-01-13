@@ -79,8 +79,18 @@ DTObjectGraphTraversal >> skipBehavious [
 ]
 
 { #category : #filtering }
+DTObjectGraphTraversal >> skipBooleans [
+	filters add: DTObjectTraversalBooleanFilter new
+]
+
+{ #category : #filtering }
 DTObjectGraphTraversal >> skipGlobals [
 	filters add: (DTObjectTraversalGlobalObjectFilter new)
+]
+
+{ #category : #filtering }
+DTObjectGraphTraversal >> skipImmediateInstances [
+	filters add: DTObjectTraversalImmediateBehavioursFilter new
 ]
 
 { #category : #filtering }
