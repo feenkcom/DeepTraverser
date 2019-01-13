@@ -1,10 +1,10 @@
 Class {
-	#name : #DTObjectTraversalBehaviourFilter,
+	#name : #DTObjectTraversalBehaviorFilter,
 	#superclass : #DTMemoryTraversalObjectFilter,
 	#category : #'DeepTraverser-MemoryTraversal'
 }
 
 { #category : #testing }
-DTObjectTraversalBehaviourFilter >> matches: anObject [
+DTObjectTraversalBehaviorFilter >> matches: anObject [
 	^ anObject isKindOf: Behavior
 ]

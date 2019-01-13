@@ -74,8 +74,8 @@ DTObjectGraphTraversal >> onStateTraverse: aBloc [
 ]
 
 { #category : #filtering }
-DTObjectGraphTraversal >> skipBehavious [
-	filters add: (DTObjectTraversalBehaviourFilter new)
+DTObjectGraphTraversal >> skipBehaviors [
+	filters add: (DTObjectTraversalBehaviorFilter new)
 ]
 
 { #category : #filtering }
