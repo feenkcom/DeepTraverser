@@ -8,6 +8,41 @@ Class {
 	#category : #'DeepTraverser-MemoryTraversal'
 }
 
+{ #category : #memory }
+DTObjectGraphTraversal >> computeMemoryFor: targetObject [
+	| memoryReport |
+	memoryReport := DTMemoryReport new.
+	self 
+		onNodeAction: [ :anObject | memoryReport includeObject: anObject ];
+		on: targetObject startWith: targetObject.
+	self run.
+	^ memoryReport
+]
+
+{ #category : #memory }
+DTObjectGraphTraversal >> computeMemoryForCollection: targetCollection [
+	| memorySize |
+	memorySize := 0.
+	self 
+		onNodeAction: [ :anObject |
+			memorySize := memorySize + anObject sizeInMemory ];
+		on: targetCollection startWith: targetCollection anyOne.
+	self run.
+	^ memorySize
+]
+
+{ #category : #memory }
+DTObjectGraphTraversal >> computeMemorySizeFor: targetObject [
+	| memorySize |
+	memorySize := 0.
+	self 
+		onNodeAction: [ :anObject |
+			memorySize := memorySize + anObject sizeInMemory ];
+		on: targetObject startWith: targetObject.
+	self run.
+	^ memorySize
+]
+
 { #category : #accessing }
 DTObjectGraphTraversal >> filters [
 	^ filters
@@ -26,18 +61,6 @@ DTObjectGraphTraversal >> initialize [
 	onNodeTraverse := [ :anObject |
 		(self onStateTraverse value: anObject) reject: [ :relatedObject |
 			(self filters anySatisfy: [ :aFilter | aFilter matches: relatedObject ]) ] ].
-]
-
-{ #category : #memory }
-DTObjectGraphTraversal >> memoryForObject: targetObject [
-	| memorySize |
-	memorySize := 0.
-	self 
-		onNodeAction: [ :anObject |
-			memorySize := memorySize + anObject sizeInMemory ];
-		on: targetObject startWith: targetObject.
-	self run.
-	^ memorySize
 ]
 
 { #category : #accessing }
@@ -87,7 +110,7 @@ DTObjectGraphTraversal >> skipTypes: classes [
 		classes: classes)
 ]
 
-{ #category : #'as yet unclassified' }
+{ #category : #private }
 DTObjectGraphTraversal >> stateToVisitForObject: anObject [
 	^ (anObject class allSlots 
 		collect: [ :aSlot |
