@@ -11,7 +11,7 @@ Class {
 
 { #category : #accessing }
 DTMemoryReportEntityDetails >> countPercentInReport [
-	^ self instancesCount / self report instancesCount
+	^ (self instancesCount / self report instancesCount) * 100
 ]
 
 { #category : #initialization }
@@ -54,5 +54,5 @@ DTMemoryReportEntityDetails >> report: aMemoryReport [
 
 { #category : #accessing }
 DTMemoryReportEntityDetails >> sizePercentInReport [
-	^ self instancesSize / self report instancesSize
+	^ (self instancesSize / self report instancesSize) * 100
 ]
