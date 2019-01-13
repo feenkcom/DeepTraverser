@@ -10,7 +10,8 @@ Class {
 { #category : #ui }
 DTMemoryReport >> gtDetailsByClassFor: aView [
 	<gtView>
-	^ classGroup gtDetailsListFor: aView
+	^ (classGroup gtDetailsListFor: aView)
+		priority: 5
 ]
 
 { #category : #ui }
@@ -20,7 +21,8 @@ DTMemoryReport >> gtDetailsByPackagesFor: aView [
 	packagesGroup := DTMemoryReportPackageGroupDetails new report: self.
 	classGroup classesDetails do: [ :aClassDetails |
 		packagesGroup includeClassDetails: aClassDetails ].
-	^ packagesGroup gtDetailsListFor: aView
+	^ (packagesGroup gtDetailsListFor: aView)
+		priority: 10
 ]
 
 { #category : #actions }
