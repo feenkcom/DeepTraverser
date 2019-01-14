@@ -8,6 +8,14 @@ Class {
 	#category : #'DeepTraverser-MemoryTraversal'
 }
 
+{ #category : #'filtering - utils' }
+DTObjectGraphTraversal >> addDefaultFilters [
+	self
+		skipCodeEntities;
+		skipGlobalState;
+		skipImmediateInstances
+]
+
 { #category : #memory }
 DTObjectGraphTraversal >> computeMemoryFor: targetObject [
 	| memoryReport |
@@ -166,12 +174,4 @@ DTObjectGraphTraversal >> stateToVisitForObject: anObject [
 			aSlot read: anObject ]), 
 		((startIndex to: anObject basicSize) collect: [ :index |
 			anObject at: index ])
-]
-
-{ #category : #'filtering - utils' }
-DTObjectGraphTraversal >> withDefaultFilters [
-	self
-		skipCodeEntities;
-		skipGlobalState;
-		skipImmediateInstances
 ]
