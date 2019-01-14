@@ -75,12 +75,32 @@ DTObjectGraphTraversal >> onStateTraverse: aBloc [
 
 { #category : #filtering }
 DTObjectGraphTraversal >> skipBehaviors [
-	filters add: (DTObjectTraversalBehaviorFilter new)
+	filters add: DTObjectTraversalBehaviorFilter new
 ]
 
 { #category : #filtering }
 DTObjectGraphTraversal >> skipBooleans [
 	filters add: DTObjectTraversalBooleanFilter new
+]
+
+{ #category : #'filtering - utils' }
+DTObjectGraphTraversal >> skipCodeEntities [
+	self
+		skipMethods;
+		skipBehaviors
+]
+
+{ #category : #filtering }
+DTObjectGraphTraversal >> skipGlobalColors [
+	filters add: DTObjectTraversalGlobalColorsFilter new
+]
+
+{ #category : #'filtering - utils' }
+DTObjectGraphTraversal >> skipGlobalState [
+	self
+		skipBooleans;
+		skipNil;
+		skipGlobals
 ]
 
 { #category : #filtering }
@@ -110,6 +130,11 @@ DTObjectGraphTraversal >> skipMethods [
 ]
 
 { #category : #filtering }
+DTObjectGraphTraversal >> skipNil [
+	filters add: DTObjectTraversalNilFilter new
+]
+
+{ #category : #filtering }
 DTObjectGraphTraversal >> skipSymbols [
 	self skipMatching: [ :anObject | anObject isSymbol ]
 ]
@@ -131,4 +156,12 @@ DTObjectGraphTraversal >> stateToVisitForObject: anObject [
 			aSlot read: anObject ]), 
 		((startIndex to: anObject basicSize) collect: [ :index |
 			anObject at: index ])
+]
+
+{ #category : #'filtering - utils' }
+DTObjectGraphTraversal >> withDefaultFilters [
+	self
+		skipCodeEntities;
+		skipGlobalState;
+		skipImmediateInstances
 ]

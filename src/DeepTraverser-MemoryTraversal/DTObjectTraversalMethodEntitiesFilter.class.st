@@ -6,5 +6,5 @@ Class {
 
 { #category : #testing }
 DTObjectTraversalMethodEntitiesFilter >> matches: anObject [
-	^ anObject isKindOf: CompiledCode
+	^ anObject isKindOf: CompiledMethod
 ]
