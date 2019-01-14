@@ -113,6 +113,16 @@ DeepTraverserWithoutAction >> gtInspectorObjectsTraversedIn: composite [
 		format: [ :each | each gtDisplayString ]
 ]
 
+{ #category : #ui }
+DeepTraverserWithoutAction >> gtObjectsTraversedViewFor: aView [
+	<gtView>
+	^ aView list
+		title: 'Traversed' translated;
+		priority: 40;
+		items: [ self objectsTraversed asOrderedCollection ];
+		itemFormat: [ :each | each gtDisplayString ]
+]
+
 { #category : #testing }
 DeepTraverserWithoutAction >> hasNext [
 	^ objectsToTraverse isEmptyOrNil not

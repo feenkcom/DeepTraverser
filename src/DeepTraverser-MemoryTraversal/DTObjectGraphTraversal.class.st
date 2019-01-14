@@ -53,6 +53,16 @@ DTObjectGraphTraversal >> filters: aCollection [
 	filters := aCollection
 ]
 
+{ #category : #ui }
+DTObjectGraphTraversal >> gtFiltersViewFor: aView [
+	<gtView>
+	^ aView list
+		title: 'Filters' translated;
+		priority: 45;
+		items: [ self filters ];
+		itemFormat: [ :each | each class name ]
+]
+
 { #category : #initialization }
 DTObjectGraphTraversal >> initialize [
 	super initialize.
