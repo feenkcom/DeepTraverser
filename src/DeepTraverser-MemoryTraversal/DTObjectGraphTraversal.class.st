@@ -122,9 +122,13 @@ DTObjectGraphTraversal >> skipTypes: classes [
 
 { #category : #private }
 DTObjectGraphTraversal >> stateToVisitForObject: anObject [
+	| startIndex |
+	startIndex := (anObject isKindOf: CompiledCode) 
+		ifTrue: [ anObject initialPC ] "Indexed variables for ompiled methods start from the initial PC"
+		ifFalse: [ 1 ].
 	^ (anObject class allSlots 
 		collect: [ :aSlot |
 			aSlot read: anObject ]), 
-		((1 to: anObject basicSize) collect: [ :index |
+		((startIndex to: anObject basicSize) collect: [ :index |
 			anObject at: index ])
 ]
