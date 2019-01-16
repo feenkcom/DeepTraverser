@@ -11,6 +11,11 @@ Symbol >> dtActionfrom: fromObject to: toObject using: aStream [
 ]
 
 { #category : #'*DeepTraverser-private' }
+Symbol >> dtRawTraverse: anObject using: aStream [
+	(anObject perform: self) dtRawTraverseUsing: aStream
+]
+
+{ #category : #'*DeepTraverser-private' }
 Symbol >> dtTraverse: anObject using: aStream [
 	(anObject perform: self) dtTraverseUsing: aStream
 ]

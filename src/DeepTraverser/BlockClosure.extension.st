@@ -11,6 +11,11 @@ BlockClosure >> dtActionfrom: fromObject to: toObject using: aStream [
 ]
 
 { #category : #'*DeepTraverser-private' }
+BlockClosure >> dtRawTraverse: anObject using: aStream [
+	(self value: anObject) dtRawTraverseUsing: aStream
+]
+
+{ #category : #'*DeepTraverser-private' }
 BlockClosure >> dtTraverse: anObject using: aStream [
 	(self value: anObject) dtTraverseUsing: aStream
 ]

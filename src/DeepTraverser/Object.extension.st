@@ -194,6 +194,11 @@ Object >> deepCollectAsSet: aBlock [
 ]
 
 { #category : #'*DeepTraverser-private' }
+Object >> dtRawTraverseUsing: aStream [
+	aStream traverse: self
+]
+
+{ #category : #'*DeepTraverser-private' }
 Object >> dtTraverseStartUsing: aStream [
 	aStream traverseStart: self
 ]
