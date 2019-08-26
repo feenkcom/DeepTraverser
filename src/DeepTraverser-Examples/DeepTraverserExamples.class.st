@@ -34,19 +34,19 @@ DeepTraverserExamples >> allSuperclassesNumber [
 ]
 
 { #category : #'examples-start-object' }
-DeepTraverserExamples >> collectionAsStartOnObject [
+DeepTraverserExamples >> collectionAsStartOnArray [
 	<gtExample>
 	| result1 result2 |
-	
-	result1 := { Object }
+
+	result1 := { Array }
 		deep: #subclasses 
 		flatCollect: [ :each | each methods ].
-		
-	result2 := Object
+
+	result2 := Array
 		deep: #subclasses 
 		flatCollect: [ :each | each methods ].
-	
-	self assert: result1 = result2.
+
+	self assert: result1 = result2
 ]
 
 { #category : #'examples-start-object' }
