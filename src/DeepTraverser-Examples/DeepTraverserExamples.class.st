@@ -34,27 +34,19 @@ DeepTraverserExamples >> allSuperclassesNumber [
 ]
 
 { #category : #'examples-start-object' }
-DeepTraverserExamples >> collectionAsStartOnObject [
+DeepTraverserExamples >> collectionAsStartOnArray [
 	<gtExample>
-	| result1 result2 areSame |
+	| result1 result2 |
 
-	result1 := { Object }
+	result1 := { Array }
 		deep: #subclasses 
 		flatCollect: [ :each | each methods ].
 
-	result2 := Object
+	result2 := Array
 		deep: #subclasses 
 		flatCollect: [ :each | each methods ].
-	
-	areSame := result1 = result2.
-	areSame
-		ifFalse: [
-			NonInteractiveTranscript stdout
-				show: #'Failed #collectionAsStartOnObject';
-				show: ('(result1 difference: result2) = {1}' format: { result1 difference: result2 }); cr;
-				show: ('(result2 difference: result1) = {1}' format: { result2 difference: result1 }); cr ].
 
-	self assert: areSame
+	self assert: result1 = result2
 ]
 
 { #category : #'examples-start-object' }
