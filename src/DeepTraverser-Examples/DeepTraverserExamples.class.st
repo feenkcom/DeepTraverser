@@ -52,6 +52,7 @@ DeepTraverserExamples >> collectionAsStartOnArray [
 { #category : #'examples-start-object' }
 DeepTraverserExamples >> collectionAsWithStartOnObject [
 	<gtExample>
+	<noTest>
 	| result1 result2 |
 	
 	result1 := { Object }
