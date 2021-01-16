@@ -1,7 +1,7 @@
 Class {
 	#name : #DTMemoryReportPackageGroupDetails,
 	#superclass : #DTMemoryReportGroupDetails,
-	#category : #'DeepTraverser-MemoryTraversal'
+	#category : #'DeepTraverser-MemoryTraversal-Group'
 }
 
 { #category : #ui }

@@ -4,7 +4,7 @@ Class {
 	#instVars : [
 		'packageName'
 	],
-	#category : #'DeepTraverser-MemoryTraversal'
+	#category : #'DeepTraverser-MemoryTraversal-Group'
 }
 
 { #category : #accessing }

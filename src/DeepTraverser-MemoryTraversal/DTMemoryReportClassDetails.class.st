@@ -5,7 +5,7 @@ Class {
 		'className',
 		'instances'
 	],
-	#category : #'DeepTraverser-MemoryTraversal'
+	#category : #'DeepTraverser-MemoryTraversal-Group'
 }
 
 { #category : #ui }
