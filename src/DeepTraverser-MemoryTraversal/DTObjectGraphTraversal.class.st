@@ -19,7 +19,7 @@ DTObjectGraphTraversal >> addDefaultFilters [
 { #category : #memory }
 DTObjectGraphTraversal >> computeMemoryFor: targetObject [
 	| memoryReport |
-	memoryReport := DTMemoryReport new.
+	memoryReport := DTMemoryGroupReport new.
 	self 
 		onNodeAction: [ :anObject | memoryReport includeObject: anObject ];
 		on: targetObject startWith: targetObject.
@@ -51,6 +51,24 @@ DTObjectGraphTraversal >> computeMemorySizeFor: targetObject [
 	^ memorySize
 ]
 
+{ #category : #memory }
+DTObjectGraphTraversal >> computeMemoryTreemapFor: targetObject [
+	| memoryReport aHolder |
+	
+	aHolder := DTMemoryTreemapReportObjectHolder new object: targetObject.
+	
+	memoryReport := DTMemoryTreemapReport new.
+	self 
+		onNodeAction: [ :anObject | memoryReport includeObject: anObject ];
+		onEdgeAction: [ :aFromObject :aToObject | memoryReport includeFromObject: aFromObject to: aToObject ];
+		on: aHolder startWith: aHolder.
+	self run.
+	
+	memoryReport root: memoryReport root objectSlots first.
+	
+	^ memoryReport
+]
+
 { #category : #accessing }
 DTObjectGraphTraversal >> filters [
 	^ filters
@@ -68,7 +86,7 @@ DTObjectGraphTraversal >> gtFiltersViewFor: aView [
 		title: 'Filters' translated;
 		priority: 45;
 		items: [ self filters ];
-		itemFormat: [ :each | each class name ]
+		itemText: [ :each | each class name ]
 ]
 
 { #category : #initialization }
@@ -78,7 +96,7 @@ DTObjectGraphTraversal >> initialize [
 	onStateTraverse := [ :anObject | self stateToVisitForObject: anObject ].
 	onNodeTraverse := [ :anObject |
 		(self onStateTraverse value: anObject) reject: [ :relatedObject |
-			(self filters anySatisfy: [ :aFilter | aFilter matches: relatedObject ]) ] ].
+			(self filters anySatisfy: [ :aFilter | aFilter matches: relatedObject ]) ] ]
 ]
 
 { #category : #accessing }
@@ -139,7 +157,7 @@ DTObjectGraphTraversal >> skipInstances: instances [
 
 { #category : #filtering }
 DTObjectGraphTraversal >> skipMatching: aBlock [
-	filters add: (DTObjectTraversalBlocFilter new block: aBlock)
+	filters add: (DTObjectTraversalBlockFilter new block: aBlock)
 ]
 
 { #category : #filtering }

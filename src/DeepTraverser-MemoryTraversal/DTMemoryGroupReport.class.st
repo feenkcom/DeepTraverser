@@ -1,21 +1,21 @@
 Class {
-	#name : #DTMemoryReport,
+	#name : #DTMemoryGroupReport,
 	#superclass : #Object,
 	#instVars : [
 		'classGroup'
 	],
-	#category : #'DeepTraverser-MemoryTraversal'
+	#category : #'DeepTraverser-MemoryTraversal-Group'
 }
 
 { #category : #ui }
-DTMemoryReport >> gtDetailsByClassFor: aView [
+DTMemoryGroupReport >> gtDetailsByClassFor: aView [
 	<gtView>
 	^ (classGroup gtDetailsListFor: aView)
 		priority: 5
 ]
 
 { #category : #ui }
-DTMemoryReport >> gtDetailsByPackagesFor: aView [
+DTMemoryGroupReport >> gtDetailsByPackagesFor: aView [
 	<gtView>
 	| packagesGroup |
 	packagesGroup := DTMemoryReportPackageGroupDetails new report: self.
@@ -26,29 +26,29 @@ DTMemoryReport >> gtDetailsByPackagesFor: aView [
 ]
 
 { #category : #actions }
-DTMemoryReport >> includeObject: anObject [
+DTMemoryGroupReport >> includeObject: anObject [
 	classGroup includeObject: anObject
 ]
 
 { #category : #initialization }
-DTMemoryReport >> initialize [ 	
+DTMemoryGroupReport >> initialize [ 	
 	super initialize.
 	classGroup := DTMemoryReportClassGroupDetails new
 		report: self.
 ]
 
 { #category : #accessing }
-DTMemoryReport >> instancesCount [
+DTMemoryGroupReport >> instancesCount [
 	^ classGroup instancesCount
 ]
 
 { #category : #accessing }
-DTMemoryReport >> instancesSize [
+DTMemoryGroupReport >> instancesSize [
 	^ classGroup instancesSize
 ]
 
 { #category : #printing }
-DTMemoryReport >> printOn: aStream [
+DTMemoryGroupReport >> printOn: aStream [
 
 	super printOn: aStream.
 	aStream

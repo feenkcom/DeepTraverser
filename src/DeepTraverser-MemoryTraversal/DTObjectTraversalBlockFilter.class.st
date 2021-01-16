@@ -1,5 +1,5 @@
 Class {
-	#name : #DTObjectTraversalBlocFilter,
+	#name : #DTObjectTraversalBlockFilter,
 	#superclass : #DTMemoryTraversalObjectFilter,
 	#instVars : [
 		'block'
@@ -8,11 +8,11 @@ Class {
 }
 
 { #category : #accessing }
-DTObjectTraversalBlocFilter >> block: aBlock [
+DTObjectTraversalBlockFilter >> block: aBlock [
 	block := aBlock	
 ]
 
 { #category : #testing }
-DTObjectTraversalBlocFilter >> matches: anObject [
+DTObjectTraversalBlockFilter >> matches: anObject [
 	^ block value: anObject
 ]

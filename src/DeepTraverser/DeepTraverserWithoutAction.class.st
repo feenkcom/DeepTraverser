@@ -120,7 +120,7 @@ DeepTraverserWithoutAction >> gtObjectsTraversedViewFor: aView [
 		title: 'Traversed' translated;
 		priority: 40;
 		items: [ self objectsTraversed asOrderedCollection ];
-		itemFormat: [ :each | each gtDisplayString ]
+		itemText: [ :each | each gtDisplayString ]
 ]
 
 { #category : #testing }

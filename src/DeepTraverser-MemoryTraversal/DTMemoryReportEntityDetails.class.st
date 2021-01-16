@@ -6,7 +6,7 @@ Class {
 		'instancesSize',
 		'report'
 	],
-	#category : #'DeepTraverser-MemoryTraversal'
+	#category : #'DeepTraverser-MemoryTraversal-Group'
 }
 
 { #category : #accessing }
