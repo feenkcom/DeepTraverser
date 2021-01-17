@@ -36,14 +36,17 @@ DTMemoryTreemapReport >> gtTreemapFor: aView [
 				anElement padding: BlInsets empty.
 				anElement margin: BlInsets empty.
 				anElement border: BlBorder empty.
-				
+
 				anElement border: (BlBorder paint: (Color gray alpha: 0.7 / aNodeContext level) width: 1).
+
+				aNodeContext model isUniqueInstance
+					ifTrue: [ anElement background: (Color green alpha: 0.3) ].
 				
-				aNodeContext level = 3 ifTrue: [
+				(aNodeContext level = 3 or: [ aNodeContext model isUniqueInstance ]) ifTrue: [
 						anElement border: (BlBorder paint: Color gray width: 1).
 						anElement addChild: (BrLabel new
 							zIndex: 10;
-							beSmallSize;
+							beTinySize;
 							text: (aNodeContext model objectClassName); 
 							look: (BrGlamorousLabelLook new foreground: Color darkGray); 
 							constraintsDo: [ :c | c ignoreByLayout. ];

@@ -23,8 +23,12 @@ DTMemoryTreemapReportObject >> addSlotObject: aReportObject [
 { #category : #converting }
 DTMemoryTreemapReportObject >> asObjectReference [
 	| isAlreadyReferenced |
-	self isImmediate
+
+	(self class isImmediateObject: self object)
 		ifTrue: [ ^ DTMemoryTreemapReportObjectImmediateReference new object: self object ].
+
+	(self class isUniqueInstanceObject: self object)
+		ifTrue: [ ^ DTMemoryTreemapReportObjectUniqueInstanceReference new reportObject: self ].
 
 	isAlreadyReferenced := self isAlreadyReferenced.
 	self increaseReferenceCount.
@@ -81,11 +85,6 @@ DTMemoryTreemapReportObject >> object [
 { #category : #accessing }
 DTMemoryTreemapReportObject >> object: anObject [
 	objectInstance := DTMemoryTreemapReportObjectInstance new object: anObject
-]
-
-{ #category : #'as yet unclassified' }
-DTMemoryTreemapReportObject >> objectClassName [
-	^ self object class name
 ]
 
 { #category : #accessing }

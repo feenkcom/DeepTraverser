@@ -34,11 +34,6 @@ DTMemoryTreemapReportObjectReference >> object: anObject [
 	object := anObject
 ]
 
-{ #category : #'as yet unclassified' }
-DTMemoryTreemapReportObjectReference >> objectClassName [
-	^ self object class name
-]
-
 { #category : #accessing }
 DTMemoryTreemapReportObjectReference >> objectInstance [
 	^ self

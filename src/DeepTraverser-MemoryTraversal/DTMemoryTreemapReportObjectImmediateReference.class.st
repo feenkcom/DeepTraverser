@@ -32,11 +32,6 @@ DTMemoryTreemapReportObjectImmediateReference >> object: anObject [
 	object := anObject
 ]
 
-{ #category : #'as yet unclassified' }
-DTMemoryTreemapReportObjectImmediateReference >> objectClassName [
-	^ self object class name
-]
-
 { #category : #printing }
 DTMemoryTreemapReportObjectImmediateReference >> printOn: aStream [
 	"Append a sequence of characters to aStream that identify the receiver."
