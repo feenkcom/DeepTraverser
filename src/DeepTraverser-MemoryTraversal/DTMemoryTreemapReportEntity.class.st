@@ -12,6 +12,15 @@ DTMemoryTreemapReportEntity class >> isImmediateObject: anObject [
 	anObject == nil
 		ifTrue: [ ^ true ].
 		
+	anObject == true
+		ifTrue: [ ^ true ].
+		
+	anObject == false
+		ifTrue: [ ^ true ].
+		
+	anObject isSymbol
+		ifTrue: [ ^ true ].
+
 	^ false
 ]
 
@@ -21,6 +30,15 @@ DTMemoryTreemapReportEntity class >> isUniqueInstanceObject: anObject [
 		and: [ anObject == anObject class uniqueInstance ])
 			ifTrue: [ ^ true ].
 			
+	(anObject class class allSlots anySatisfy: [ :eachSlot | (eachSlot read: anObject class) == anObject ])
+		ifTrue: [ ^ true ].
+	
+	anObject == Float infinity
+		ifTrue: [ ^ true ].
+		
+	anObject == Float negativeInfinity
+		ifTrue: [ ^ true ].
+	
 	^ false
 ]
 

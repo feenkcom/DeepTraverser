@@ -14,7 +14,13 @@ DTMemoryTreemapReportObjectHeader >> children [
 
 { #category : #testing }
 DTMemoryTreemapReportObjectHeader >> exists [
-	^ self object class isImmediateClass not
+	(self object class isImmediateClass)
+		ifTrue: [ ^ false ].
+		
+	(self object class isVariable)
+		ifTrue: [ ^ false ].
+		
+	^ true
 ]
 
 { #category : #accessing }
