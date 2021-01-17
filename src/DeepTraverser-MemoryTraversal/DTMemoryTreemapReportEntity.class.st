@@ -4,6 +4,26 @@ Class {
 	#category : #'DeepTraverser-MemoryTraversal-Treemap'
 }
 
+{ #category : #testing }
+DTMemoryTreemapReportEntity class >> isImmediateObject: anObject [
+	anObject class isImmediateClass
+		ifTrue: [ ^ true ].
+		
+	anObject == nil
+		ifTrue: [ ^ true ].
+		
+	^ false
+]
+
+{ #category : #testing }
+DTMemoryTreemapReportEntity class >> isUniqueInstanceObject: anObject [
+	((anObject class respondsTo: #uniqueInstance)
+		and: [ anObject == anObject class uniqueInstance ])
+			ifTrue: [ ^ true ].
+			
+	^ false
+]
+
 { #category : #accessing }
 DTMemoryTreemapReportEntity >> children [
 	^ self subclassResponsibility
@@ -27,17 +47,6 @@ DTMemoryTreemapReportEntity >> gtTreeFor: aView [
 ]
 
 { #category : #testing }
-DTMemoryTreemapReportEntity >> isImmediate [
-	self object class isImmediateClass
-		ifTrue: [ ^ true ].
-		
-	self object == nil
-		ifTrue: [ ^ true ].
-		
-	^ false
-]
-
-{ #category : #testing }
 DTMemoryTreemapReportEntity >> isObjectHeader [
 	^ false
 ]
@@ -47,9 +56,24 @@ DTMemoryTreemapReportEntity >> isOccupiedBySlot [
 	^ false
 ]
 
+{ #category : #testing }
+DTMemoryTreemapReportEntity >> isUniqueInstance [
+	^ false
+]
+
 { #category : #accessing }
 DTMemoryTreemapReportEntity >> leaves [
 	^ self subclassResponsibility
+]
+
+{ #category : #accessing }
+DTMemoryTreemapReportEntity >> object [
+	^ self subclassResponsibility
+]
+
+{ #category : #'as yet unclassified' }
+DTMemoryTreemapReportEntity >> objectClassName [
+	^ self object class name
 ]
 
 { #category : #accessing }
