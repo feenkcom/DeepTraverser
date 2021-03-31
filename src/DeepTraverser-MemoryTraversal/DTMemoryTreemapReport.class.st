@@ -48,7 +48,7 @@ DTMemoryTreemapReport >> gtTreemapFor: aView [
 							zIndex: 10;
 							beTinySize;
 							text: (aNodeContext model objectClassName); 
-							look: (BrGlamorousLabelLook new foreground: Color darkGray); 
+							aptitude: (BrGlamorousLabelAptitude new foreground: Color darkGray); 
 							constraintsDo: [ :c | c ignoreByLayout. ];
 							when: BlClickEvent do: [ :anEvent |
 								anEvent consumed: true.
@@ -63,7 +63,7 @@ DTMemoryTreemapReport >> gtTreemapFor: aView [
 						anElement addChild: (BrLabel new 
 							beTinySize;
 							text: (aLeafContext  model name printString); 
-							look: (BrGlamorousLabelLook new foreground: Color gray); 
+							aptitude: (BrGlamorousLabelAptitude new foreground: Color gray); 
 							constraintsDo: [ :c |
 								c ignoreByLayout.
 								c ignored horizontal alignCenter.
@@ -74,7 +74,7 @@ DTMemoryTreemapReport >> gtTreemapFor: aView [
 						anElement addChild: (BrLabel new
 							beTinySize;
 							text: 'Header'; 
-							look: (BrGlamorousLabelLook new foreground: Color gray); 
+							aptitude: (BrGlamorousLabelAptitude new foreground: Color gray); 
 							constraintsDo: [ :c |
 								c ignoreByLayout.
 								c ignored horizontal alignCenter.
