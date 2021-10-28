@@ -2,18 +2,18 @@
 Baseline to load the project DeepTraverser
 "
 Class {
-	#name : 'BaselineOfDeepTraverser',
-	#superclass : 'BaselineOf',
-	#category : 'BaselineOfDeepTraverser'
+	#name : #BaselineOfDeepTraverser,
+	#superclass : #BaselineOf,
+	#category : #BaselineOfDeepTraverser
 }
 
-{ #category : 'baseline' }
+{ #category : #baseline }
 BaselineOfDeepTraverser >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
 		spec
 			baseline: 'GToolkitExamplesEngine' with: [
-				spec repository: 'github://feenkcom/gtoolkit-examples:v0.8.33/src' ].
+				spec repository: 'github://feenkcom/gtoolkit-examples:v0.8.34/src' ].
 
 		spec package: 'DeepTraverser'.
 		spec package: 'DeepTraverser-MemoryTraversal' with: [

@@ -1,1 +1,1 @@
-Package { #name : 'BaselineOfDeepTraverser' }
+Package { #name : #BaselineOfDeepTraverser }
