@@ -11,7 +11,7 @@ SequenceableCollection >> deep: aTraversalBlock do: anObjectActionBlock [
 
 { #category : #'*DeepTraverser' }
 SequenceableCollection >> deep: aTraversalBlock do: anObjectActionBlock relationDo: aRelationBlock [
-	" wie cannot traverse this graph without all items of self - so we include them "
+	" we cannot traverse this graph without all items of self - so we include them "
 	(DeepTraverser new 
 		onNodeTraverse: aTraversalBlock;
 		onNodeAction: anObjectActionBlock;
@@ -22,7 +22,7 @@ SequenceableCollection >> deep: aTraversalBlock do: anObjectActionBlock relation
 
 { #category : #'*DeepTraverser' }
 SequenceableCollection >> deep: aTraversalBlock relationDo: anObjectEdgeActionBlock [
-	" wie cannot traverse this graph without all items of self - so we include them "
+	" we cannot traverse this graph without all items of self - so we include them "
 	(DeepTraverser new 
 		onNodeTraverse: aTraversalBlock;
 		onEdgeAction: anObjectEdgeActionBlock;
