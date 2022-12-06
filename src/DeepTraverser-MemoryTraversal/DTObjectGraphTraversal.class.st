@@ -184,6 +184,10 @@ DTObjectGraphTraversal >> skipTypes: classes [
 { #category : #private }
 DTObjectGraphTraversal >> stateToVisitForObject: anObject [
 	| startIndex |
+	
+	anObject isClass
+		ifTrue: [ ^ {} ].
+	
 	startIndex := (anObject isKindOf: CompiledCode) 
 		ifTrue: [ anObject initialPC ] "Indexed variables for ompiled methods start from the initial PC"
 		ifFalse: [ 1 ].
