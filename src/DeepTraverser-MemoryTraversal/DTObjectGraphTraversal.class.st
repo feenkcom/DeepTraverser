@@ -115,6 +115,11 @@ DTObjectGraphTraversal >> skipBehaviors [
 ]
 
 { #category : #filtering }
+DTObjectGraphTraversal >> skipBlockClosures [
+	filters add: (DTObjectTraversalBlockClosuresFilter new)
+]
+
+{ #category : #filtering }
 DTObjectGraphTraversal >> skipBooleans [
 	filters add: DTObjectTraversalBooleanFilter new
 ]
@@ -171,6 +176,11 @@ DTObjectGraphTraversal >> skipNil [
 ]
 
 { #category : #filtering }
+DTObjectGraphTraversal >> skipRingDefinitions [
+	filters add: (DTObjectTraversalRingDefinitionsFilter new)
+]
+
+{ #category : #filtering }
 DTObjectGraphTraversal >> skipSymbols [
 	self skipMatching: [ :anObject | anObject isSymbol ]
 ]
@@ -189,7 +199,7 @@ DTObjectGraphTraversal >> stateToVisitForObject: anObject [
 		ifTrue: [ ^ {} ].
 	
 	startIndex := (anObject isKindOf: CompiledCode) 
-		ifTrue: [ anObject initialPC ] "Indexed variables for ompiled methods start from the initial PC"
+		ifTrue: [ anObject initialPC ] "Indexed variables for compiled methods start from the initial PC"
 		ifFalse: [ 1 ].
 	^ (anObject class allSlots 
 		collect: [ :aSlot |
