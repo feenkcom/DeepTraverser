@@ -77,7 +77,7 @@ DeepTraverser >> traverse: anObject [
 		^ self ].
 	
 	" add this new node for the next traversal. adding must be at the end of the collection otherwise onPickNextAction/isActionAppliedOnCurrent will be corrupt "
-	objectsToTraverse add: anObject.
+	objectsToTraverse add: anObject -> anObject.
 	
 	" schedule/postpone this new node for the following action-phase "
 	(edgesToAction at: anObject ifAbsentPut: [ OrderedCollection new ]) add: (current -> anObject).
