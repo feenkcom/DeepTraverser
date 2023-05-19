@@ -65,10 +65,10 @@ DeepTraverserWithoutEdges >> on: anObject startWithAll: aCollection [
 DeepTraverserWithoutEdges >> on: anObject1 startWithout: anObject2 [
 	super on: anObject1 startWithout: anObject2.
 
-	onPickNextAction := [ 
-		current := objectsToTraverse removeFirst.
+	onPickNextAction := [ current := objectsToTraverse removeFirst.
 		isActionAppliedOnCurrent notNil
-			ifTrue: [ isActionAppliedOnCurrent := true. onPickNextAction := [ current := objectsToTraverse removeFirst ] ]
+			ifTrue: [ isActionAppliedOnCurrent := true.
+				onPickNextAction := [ current := objectsToTraverse removeFirst ] ]
 			ifFalse: [ isActionAppliedOnCurrent := false ] ].
 	isActionAppliedOnCurrent := nil
 ]
@@ -104,6 +104,6 @@ DeepTraverserWithoutEdges >> traverse: anObject [
 	(self isToTraverse: anObject) ifTrue: [ ^ self ].
 	
 	" add this new node for the next traversal. adding must be at the end of the collection otherwise onPickNextAction/isActionAppliedOnCurrent will be corrupt "
-	objectsToTraverse add: anObject.
+	objectsToTraverse add: anObject -> anObject.
 	
 ]
