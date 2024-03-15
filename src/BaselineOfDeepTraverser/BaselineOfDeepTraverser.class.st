@@ -8,6 +8,14 @@ Class {
 }
 
 { #category : #baseline }
+BaselineOfDeepTraverser class >> gtDependencyAnalysisPreloadedBaselines [
+	"For extension to TGtGroup"
+
+	^ super gtDependencyAnalysisPreloadedBaselines
+		copyWith: BaselineOfGToolkitFileUtility
+]
+
+{ #category : #baseline }
 BaselineOfDeepTraverser >> baseline: spec [
 	<baseline>
 	spec for: #'common' do: [
