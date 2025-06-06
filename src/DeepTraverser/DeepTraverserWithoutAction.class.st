@@ -15,7 +15,7 @@ Class {
 	#category : #DeepTraverser
 }
 
-{ #category : #'*DeepTraverser-UI' }
+{ #category : #examples }
 DeepTraverserWithoutAction class >> gtExampleDeepTraverserWithoutAction [
 	<gtExample>
 	<label: 'DeepTraverserWithoutAction'>
@@ -102,15 +102,6 @@ DeepTraverserWithoutAction >> expectedSize [
 { #category : #accessing }
 DeepTraverserWithoutAction >> expectedSize: anNumber [
 	expectedSize := expectedSize
-]
-
-{ #category : #'*DeepTraverser-UI' }
-DeepTraverserWithoutAction >> gtInspectorObjectsTraversedIn: composite [
-	<gtInspectorPresentationOrder: 40>
-	composite list
-		title: 'Traversed';
-		display: [ self objectsTraversed ];
-		format: [ :each | each gtDisplayString ]
 ]
 
 { #category : #ui }
