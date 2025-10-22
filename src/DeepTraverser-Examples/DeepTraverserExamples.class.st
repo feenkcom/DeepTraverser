@@ -121,6 +121,29 @@ DeepTraverserExamples >> deepCollectAsSet [
 	self assert: result = #(2 3) asSet
 ]
 
+{ #category : #'examples-compiledmethod' }
+DeepTraverserExamples >> deepCollectForCompiledMethod [
+	<gtExample>
+	| compiledMethod result |
+	compiledMethod := Object >> #printString.
+	result := compiledMethod
+			deepCollect: [ :each | each selfMessages collect: [ :m | compiledMethod methodClass lookupSelector: m ] ].
+	self assert: (result includes: Object >> #printOn:).
+	^ result
+]
+
+{ #category : #'examples-compiledmethod' }
+DeepTraverserExamples >> deepCollectSelectorsForCompiledMethod [
+	<gtExample>
+	| compiledMethod result |
+	compiledMethod := Object >> #printString.
+	result := compiledMethod
+			deep: [ :each | each selfMessages collect: [ :m | compiledMethod methodClass lookupSelector: m ] ]
+			collect: #selector.
+	self assert: (result includes: #printStringLimitedTo:).
+	^ result
+]
+
 { #category : #'examples-extensions' }
 DeepTraverserExamples >> deepCollectSimple [
 	<gtExample>
@@ -162,6 +185,22 @@ DeepTraverserExamples >> deepDoRelationDo [
 				= {1 -> 2.
 						1 -> 3.
 						2 -> 3} asOrderedCollection
+]
+
+{ #category : #'examples-compiledmethod' }
+DeepTraverserExamples >> deepDoRelationDoForCompiledMethod [
+	<gtExample>
+	| compiledMethod relations nodes |
+	compiledMethod := Object >> #printString.
+	relations := OrderedCollection new.
+	nodes := OrderedCollection new.
+	compiledMethod
+		deep: [ :each | each selfMessages collect: [ :m | compiledMethod methodClass lookupSelector: m ] ]
+		do: [ :each | nodes add: each ]
+		relationDo: [ :a :b | relations add: a -> b ].
+	self assert: (nodes includes: Object >> #printStringLimitedTo:).
+	self assert: (relations includes: compiledMethod -> (Object >> #printStringLimitedTo:)).
+	^ nodes
 ]
 
 { #category : #'examples-extensions' }
