@@ -21,7 +21,7 @@ BaselineOfDeepTraverser >> baseline: spec [
 	spec for: #'common' do: [
 		spec
 			baseline: 'GToolkitExamplesEngine' with: [
-				spec repository: 'github://feenkcom/gtoolkit-examples:v0.8.122/src' ].
+				spec repository: 'github://feenkcom/gtoolkit-examples:v0.8.123/src' ].
 
 		spec package: 'DeepTraverser'.
 		spec package: 'DeepTraverser-MemoryTraversal' with: [
